@@ -1,0 +1,259 @@
+/**
+  Project name: VRHouseWeb
+  Created by darrencai on 2018/08/16 11:32
+  Copyright 2017年 - 2018年 上海亦我信息技术有限公司
+**/
+
+#anchorDiv {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 500;
+}
+
+#anchorDiv>span {
+    vertical-align: middle;
+    display: inline-block;
+    height: 100%;
+    width: 0;
+}
+
+#anchorDiv>.content {
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    min-width: 320px;
+    max-height: 100%;
+    padding: 30px 40px;
+    overflow: auto;
+    text-align: left;
+    position: relative;
+    background-color: rgba(240, 240, 240, .8);
+    font-size: 16px;
+}
+
+#anchorDiv>.content>i.ico-cross {
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: url(../textures/hand.png), pointer;
+    -webkit-tap-highlight-color: transparent;
+    background-color: rgba(0, 0, 0, .5);
+    position: absolute;
+    right: 2px;
+    top: 2px;
+}
+#anchorDiv>.content>div:not(:first-child) {
+    position: relative;
+    padding-top: 15px;
+    clear: both;
+}
+
+#anchorDiv>.content>div>*:last-child {
+    box-sizing: border-box;
+    width: 240px;
+    float: right;
+}
+
+#anchorDiv>.content>div>span {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+#anchorDiv>.content>.name>*:last-child, #anchorDiv>.content>.type>*:last-child {
+    height: 26px;
+    font-size: 16px;
+}
+
+#anchorDiv>div.resource {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#anchorDiv>.content>div.resource {
+    padding-top: 0;
+    margin-top: 15px;
+    text-align: center;
+}
+
+#anchorDiv>.content>.desc>span {
+    line-height: 180px;
+}
+
+#anchorDiv>.content>.desc>textarea {
+    word-break: break-all;
+    resize:  none;
+    height: 100%;
+}
+
+#anchorDiv>.content>.desc>textarea:first-child {
+    width: 100%;
+}
+
+#anchorDiv>.content>div.url>div {
+    padding-right: 26px;
+}
+
+#anchorDiv>.content>div.url>div>input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 26px;
+}
+
+#anchorDiv>.content>div.url>div>i {
+    cursor: url(../textures/hand.png), pointer;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    font-size: 22px;
+    width: auto;
+    height: 26px;
+    line-height: 26px;
+    position: absolute;
+    right: 0;
+}
+
+#anchorDiv>.content>div.url>div>i:hover {
+    color: #7f624b;
+}
+
+#anchorDiv>.content>div.resource.img {
+    margin-bottom: 195px;
+}
+
+#anchorDiv>.content>div.resource>#imgCarousels {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: auto;
+}
+
+#anchorDiv>.content>div.resource>#imgCarousels>ul.flipster__container {
+    line-height: 180px;
+    height: 180px;
+    padding: 0;
+    margin: auto;
+}
+
+#anchorDiv>.content>div.resource>video, #anchorDiv>.content>div.resource>#imgCarousels img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 180px;
+    vertical-align: middle;
+    float: none;
+}
+
+#anchorDiv>.content>div.resource>audio {
+    width: 360px;
+    max-width: 80%;
+    vertical-align: middle;
+    float: none;
+}
+
+#anchorDiv>.content>div.resource>iframe, #anchorDiv>.content>.desc {
+    height: 180px;
+}
+
+@media (min-width: 800px) and (min-height: 600px) {
+    #anchorDiv>.content>div.resource>video, #anchorDiv>.content>div.resource>#imgCarousels img, #anchorDiv>.content>div.resource>iframe:not(.fullScreen) {
+        max-width: 90vw;
+        min-width: 81vw;
+        max-height: 90vh;
+        min-height: 81vh;
+        height: auto;
+    }
+}
+
+#anchorDiv>.content>div.resource.error {
+    height: auto;
+}
+
+#anchorDiv>.content>div.resource.error>video, #anchorDiv>.content>div.resource>iframe {
+    width: 100%;
+}
+
+#anchorDiv>.content>div.resource>iframe.fullScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#anchorDiv>.content>div.resource>i {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    text-align: center;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-tap-highlight-color: transparent;
+    cursor: url(../textures/hand.png), pointer;
+}
+
+#anchorDiv>.content>div.resource>i.fullScreen {
+    position: fixed;
+}
+
+#anchorDiv>div.resource>i:hover, #anchorDiv>.content>div.resource>i:hover, #anchorDiv>.content>i.ico-cross:hover {
+    background-color: rgba(255, 102, 0, .5);
+}
+
+#anchorDiv>.content>div>button.cancel, #anchorDiv>.content>div>button.save {
+    cursor: url(../textures/hand.png), pointer;
+    font-size: 16px;
+    width: 45%;
+}
+
+#anchorDiv>img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+@media (max-width: 439px) {
+    #anchorDiv.phone {
+        background-color: rgba(240, 240, 240, .8);
+    }
+
+    #anchorDiv.phone>.content {
+        background-color: transparent;
+        width: 100%;
+    }
+
+    #anchorDiv.phone>.content>i.ico-close {
+        position: fixed;
+    }
+
+    #anchorDiv>.content>div>span, #anchorDiv>.content>.desc>span {
+        display: block;
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    #anchorDiv>.content>div>*:last-child {
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    #anchorDiv>.content>div.url>div {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
