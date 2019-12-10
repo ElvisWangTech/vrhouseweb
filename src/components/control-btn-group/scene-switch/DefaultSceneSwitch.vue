@@ -1,5 +1,5 @@
 <template>
-  <div id="largeViewSwitchController" class="zIndex100">
+  <div id="largeViewSwitchController" class="zIndex100" style="display: none;">
     <div id="showOtherFloorPlanDiv" class="pc">
       <input id="showOtherFloorPlanCheckBox" type="checkbox" />
       <label for="showOtherFloorPlanCheckBox">其它</label>

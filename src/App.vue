@@ -1,22 +1,17 @@
 <template>
   <div id="app">
-    <global-loading/>
     <default-floor-switch/>
     <button-group/>
     <default-scene-switch/>
     <godview-panel/>
-    <menu-controller/>
-    <thumbnail-controller/>
+    <collapse :is-phone="checkPhone()" :is-collapse="true" animateclass="slideup">
+      <menu-controller/>
+      <thumbnail-controller :thumbnail-list="thumbnailList"/>
+    </collapse>
     <slogan/>
     <logo/>
 
     <div id="vr_house_container"></div>
-
-    <div id="welcome" class="zIndex100"></div>
-
-    <div id="disclaimer" class="zIndex100">
-        <div id="disclaimer_tip">wifi环境下浏览更顺畅 · 实际情况以现场实勘为准</div>
-    </div>
 
     <div id="loadRoomFailedTip" class="centered zIndex100"></div>
 
@@ -45,10 +40,13 @@
             <a>确认并下载</a>
         </div>
     </div>
+    <global-loading v-bind:loading-status="loadingStatus" v-bind:loading-progress="loadingProgress"/>
   </div>
 </template>
 
 <script>
+import Util from './utils';
+import Fetcher from './fetcher';
 import {
     GlobalLoading,
     RoomLoading,
@@ -60,6 +58,7 @@ import {
     ThumbnailController,
     Slogan,
     Logo,
+    Collapse,
     ControlTip,
     ControlTip2D,
     ControlTip3D,
@@ -78,10 +77,58 @@ export default {
     'thumbnail-controller': ThumbnailController,
     'slogan': Slogan,
     'logo': Logo,
+    'collapse': Collapse,
     'control-tip': ControlTip,
     'control-tip-2D': ControlTip2D,
     'control-tip-3D': ControlTip3D,
     'vr-start-tip': vrStartTip,
+  },
+  data() {
+    return {
+      loadingStatus: this.$store.state.loadingStatus,
+      loadingProgress: this.$store.state.loadingProgress,
+      isPhone: Util.checkIsPhone(),
+      thumbnailList: []
+    }
+  },
+  watch: {
+    '$store.state.loadingProgress': function(value) {
+      this.loadingProgress = value;
+    },
+    '$store.state.loadingStatus': function(value) {
+      this.loadingStatus = value;
+    },
+  },
+  methods: {
+    loadResources() {
+      console.log('load resources..');
+      // 出于演示目的模拟加载效果
+      let progress = 0;
+      let $store = this.$store;
+      $store.dispatch('startLoading');
+      let self = this;
+      // 获取viewData数据
+      Fetcher.getViewData(res=>{
+        console.log('got viewdata: ', res.data);
+        $store.dispatch('setViewData', res.data);
+        self.thumbnailList = $store.state.thumbnails;
+      });
+
+      let timer = setInterval(function(){
+        $store.dispatch('progressLoading', progress += 0.1);
+        if (progress >= 1) {
+          $store.dispatch('endLoading');
+          clearInterval(timer);
+        }
+      }, 100);
+    },
+    checkPhone() {
+      return this.isPhone?'phone':'';
+    }
+  },
+  mounted() {
+    console.log('mounted');
+    this.loadResources();
   }
 }
 </script>

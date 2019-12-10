@@ -9,6 +9,7 @@ import MenuController from './menu-group/MenuController'
 import ThumbnailController from './thumbnail-group/ThumbnailController'
 import Slogan from './common/Slogan'
 import Logo from './common/Logo'
+import Collapse from './common/Collapse'
 
 // 一些操作提示
 import ControlTip from './control-tip/ControlTip'
@@ -27,6 +28,7 @@ export {
     ThumbnailController,
     Slogan,
     Logo,
+    Collapse,
     ControlTip,
     ControlTip2D,
     ControlTip3D,

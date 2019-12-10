@@ -26,5 +26,5 @@ new Vue({
       return {
           title: this.title
       }
-  },
+  }
 })
