@@ -1,8 +1,8 @@
 export default class Thumbnail {
-    constructor() {
-        this.ID = undefined;
-        this.ImagePath = undefined;
-        this.Name = undefined;
-        this.onclick = undefined;
-    }
+  constructor() {
+    this.ID = undefined;
+    this.ImagePath = undefined;
+    this.Name = undefined;
+    this.onclick = undefined;
+  }
 };

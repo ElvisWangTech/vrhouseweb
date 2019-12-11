@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <default-floor-switch/>
-    <button-group/>
+    <button-group :buttons="buttons"/>
     <default-scene-switch/>
     <godview-panel/>
     <collapse :is-phone="checkPhone()" :is-collapse="true" animateclass="slideup">
-      <menu-controller/>
-      <thumbnail-controller :thumbnail-list="thumbnailList"/>
+      <menu-controller :menu-icons="menuIcons"/>
+      <thumbnail-controller :thumbnail-list="thumbnailList" :client-width="screen.clientWidth"/>
     </collapse>
     <slogan/>
     <logo/>
@@ -47,6 +47,8 @@
 <script>
 import Util from './utils';
 import Fetcher from './fetcher';
+import Config from './config';
+import Button from './models/Button';
 import {
     GlobalLoading,
     RoomLoading,
@@ -64,6 +66,21 @@ import {
     ControlTip3D,
     vrStartTip,
 } from './components'
+
+let buttons = [];
+for (let bcKey in Config.buttons) {
+  let bc = Config.buttons[bcKey];
+  let btn = new Button();
+  btn.ID = bc.id;
+  btn.ImageClass = bc.imageClass;
+  btn.Name = bc.name;
+  btn.Onclick = bc.onclick;
+  btn.Style = bc.style;
+  btn.Enabled = bc.enabled;
+  btn.Active = bc.active;
+  buttons.push(btn);
+}
+
 export default {
   name: 'App',
   components: {
@@ -88,7 +105,13 @@ export default {
       loadingStatus: this.$store.state.loadingStatus,
       loadingProgress: this.$store.state.loadingProgress,
       isPhone: Util.checkIsPhone(),
-      thumbnailList: []
+      thumbnailList: [],
+      menuIcons: Config.menuIcons,
+      buttons: buttons,
+      screen: {
+        clientWidth: 0,
+        clientHeight: 0
+      }
     }
   },
   watch: {
@@ -124,7 +147,15 @@ export default {
     },
     checkPhone() {
       return this.isPhone?'phone':'';
+    },
+    handleResize() {
+      // TODO ...
+      this.screen.clientWidth = document.documentElement.clientWidth;
+      this.screen.clientHeight = document.documentElement.clientHeight;
     }
+  },
+  created() {
+    window.addEventListener('resize', this.handleResize);
   },
   mounted() {
     console.log('mounted');
