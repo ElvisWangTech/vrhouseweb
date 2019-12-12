@@ -7,7 +7,7 @@
     <div id="loading_controller" class="zIndex100 centered" v-show="status===1">
       <div class="logo"><img src="@/assets/textures/logo.gif"></div>
       <div id="loading_bar">
-        <div id="loading_progress_bar" :style="computeWidth()"></div>
+        <div id="loading_progress_bar" :style="computeWidth"></div>
       </div>
       <div class="slogan"><img src="@/assets/textures/slogan.png"></div>
     </div>
@@ -33,7 +33,7 @@ export default {
       status: this.loadingStatus
     };
   },
-  methods: {
+  computed: {
     computeWidth() {
       return "width:" + this.progress * 100 + "%";
     }

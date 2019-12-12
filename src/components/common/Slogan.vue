@@ -1,5 +1,5 @@
 <template>
-  <div id="floorController"></div>
+  <div id="slogan"></div>
 </template>
 
 <script>

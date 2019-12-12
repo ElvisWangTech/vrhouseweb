@@ -4,6 +4,10 @@ import {
   LoadingStatus
 } from '../constrant'
 import viewDataMaker from './viewDataMaker'
+import {
+  getHotSpotById,
+  getRoomByHotSpotId
+} from '../functions/HouseFunction'
 
 Vue.use(Vuex)
 
@@ -14,10 +18,17 @@ const store = new Vuex.Store({
     loadingProgress: 0,
     viewData: null,
     thumbnails: [],
+    currRoom: {},
+    currHotSpot: {}
   },
   getters: {
     thumbnails: state => {
       return viewDataMaker.getHotSpotThumbnailList(state.viewData);
+    },
+    currHotSpot: state => {
+      var hotSpot = viewDataMaker.getDefaultHotSpot(state.viewData);
+      state.currRoom = getRoomByHotSpotId(state.viewData, hotSpot.ID);
+      return hotSpot;
     }
   },
   mutations: {
@@ -32,7 +43,10 @@ const store = new Vuex.Store({
     },
     setViewData(state, viewData) {
       state.viewData = viewData;
-      state.thumbnails = viewDataMaker.getHotSpotThumbnailList(viewData);
+    },
+    setCurrHotSpot(state, hotSpotId) {
+      state.currHotSpot = getHotSpotById(state.viewData, hotSpotId);
+      state.currRoom = getRoomByHotSpotId(state.viewData, hotSpotId);
     }
   },
   actions: {
@@ -59,6 +73,9 @@ const store = new Vuex.Store({
     },
     setViewData(context, viewData) {
       context.commit('setViewData', viewData);
+    },
+    setCurrHotSpot(context, hotSpotId) {
+      context.commit('setCurrHotSpot', hotSpotId);
     }
   }
 });

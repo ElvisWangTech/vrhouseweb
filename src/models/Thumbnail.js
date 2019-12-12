@@ -3,6 +3,6 @@ export default class Thumbnail {
     this.ID = undefined;
     this.ImagePath = undefined;
     this.Name = undefined;
-    this.onclick = undefined;
+    this.Onclick = undefined;
   }
 };

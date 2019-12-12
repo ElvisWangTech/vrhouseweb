@@ -1,12 +1,26 @@
 import Fetcher from '../fetcher'
 import {
-  isAdditionalHotSpot
-} from '../models/HouseModel'
+  isAdditionalHotSpot,
+  getDefaultRoomByFloor,
+  getHotSpotsDataOfRoom
+} from '../functions/HouseFunction'
 import Thumbnail from '../models/Thumbnail'
 
 const housePathPrefix = Fetcher.getHousePathPrefix();
 const isEditorMode = Fetcher.isEditorMode;
 const ViewDataMaker = {};
+
+ViewDataMaker.getDefaultRoom = function (houseData, floorIndex) {
+  floorIndex = floorIndex || 0;
+  var floor = houseData.Floors[floorIndex];
+  return getDefaultRoomByFloor(floor);
+};
+
+ViewDataMaker.getDefaultHotSpot = function (houseData, room) {
+  room = room || this.getDefaultRoom(houseData);
+  var hotSpots = getHotSpotsDataOfRoom(houseData, room);
+  return hotSpots[0];
+};
 
 ViewDataMaker.getHotSpotThumbnailList = function (houseData) {
   var thumbnailList = [];
@@ -28,7 +42,7 @@ ViewDataMaker.getHotSpotThumbnailList = function (houseData) {
     if (hotSpot.SpaceID) {
       thumbnail.SpaceID = hotSpot.SpaceID;
     }
-    thumbnail.onclick = this.onThumbnailClicked;
+    thumbnail.Onclick = this.onThumbnailClicked;
 
     thumbnailList.push(thumbnail);
   }

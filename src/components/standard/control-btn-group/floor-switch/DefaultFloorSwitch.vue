@@ -1,5 +1,5 @@
 <template>
-  <div id="floorController">
+  <div id="defaultFloorSwitch">
     <div>
       <div class="floorItem all">
         
