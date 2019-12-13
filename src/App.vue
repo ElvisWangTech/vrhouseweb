@@ -54,14 +54,7 @@ import { StandardComs, DecorationComs } from "./components";
 let buttons = [];
 for (let bcKey in Config.buttons) {
   let bc = Config.buttons[bcKey];
-  let btn = new Button();
-  btn.ID = bc.id;
-  btn.ImageClass = bc.imageClass;
-  btn.Name = bc.name;
-  btn.Onclick = bc.onclick;
-  btn.Style = bc.style;
-  btn.Enabled = bc.enabled;
-  btn.Active = bc.active;
+  let btn = Button.fromJSON(bc);
   buttons.push(btn);
 }
 
@@ -176,3 +169,7 @@ export default {
   background: lightskyblue;
 }
 </style>
+<style src="./assets/css/index.css"></style>
+<style src="./assets/css/icon.css"></style>
+<style src="./assets/css/anchor.css" scoped></style>
+<style src="./assets/css/editor.css" scoped></style>

@@ -6,25 +6,39 @@ import App from './App'
 import mata from 'vue-meta'
 import vuex from 'vuex'
 import store from './store'
+import VueI18n from 'vue-i18n'
+import lang from './i18n'
 
 Vue.config.productionTip = false
 
 Vue.use(mata)
 Vue.use(vuex)
+Vue.use(VueI18n)
+
+const messages = lang;
+
+// Create VueI18n instance with options
+const i18n = new VueI18n({
+  locale: 'zh-CN', // set locale
+  messages, // set locale messages
+})
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   // router,
   store,
-  components: { App },
-  template: '<App/>',
-  data:{
-    title:store.state.title
+  i18n,
+  components: {
+    App
   },
-  metaInfo(){
-      return {
-          title: this.title
-      }
+  template: '<App/>',
+  data: {
+    title: store.state.title
+  },
+  metaInfo() {
+    return {
+      title: this.title
+    }
   }
 })

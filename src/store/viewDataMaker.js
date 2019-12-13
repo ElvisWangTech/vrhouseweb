@@ -42,7 +42,6 @@ ViewDataMaker.getHotSpotThumbnailList = function (houseData) {
     if (hotSpot.SpaceID) {
       thumbnail.SpaceID = hotSpot.SpaceID;
     }
-    thumbnail.Onclick = this.onThumbnailClicked;
 
     thumbnailList.push(thumbnail);
   }

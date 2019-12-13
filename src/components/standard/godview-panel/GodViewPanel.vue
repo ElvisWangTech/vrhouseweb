@@ -3,8 +3,8 @@
     <div id="roomInfo">{{roomInfo}}</div>
     <div id="small-view-container"></div>
     <div id="switch-2d-3d-btn-group">
-      <button id="switch3DButton" :class="{modeIn: viewMode==='3D'}" @click="handleSwitch('3D')">3D户型</button>
-      <button id="switch2DButton" :class="{modeIn: viewMode==='2D'}" @click="handleSwitch('2D')">2D户型</button>
+      <button id="switch3DButton" :class="{modeIn: viewMode==='3D'}" @click="handleSwitch('3D')">{{$t('floorPlan3d')}}</button>
+      <button id="switch2DButton" :class="{modeIn: viewMode==='2D'}" @click="handleSwitch('2D')">{{$t('floorPlan2d')}}</button>
     </div>
   </div>
 </template>
