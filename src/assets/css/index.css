@@ -284,16 +284,6 @@ h5 {
   color: #fff;
 }
 
-@media (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio : 3) {
-
-  /*#floorPlanDiv {*/
-  /*transform: translateY(34px);*/
-  /*}*/
-  #disclaimer>div {
-    /*transform: translateY(-34px);*/
-  }
-}
-
 #largeViewSwitchController {
   position: fixed;
   bottom: 35px;
