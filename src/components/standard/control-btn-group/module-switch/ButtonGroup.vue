@@ -1,5 +1,5 @@
 <template>
-  <div id="controlDiv" class="zIndex100">
+  <div id="controlDiv" class="zIndex100" :style="{marginTop: isPhone?'15px':'0'}">
     <div v-for="(b, index) in buttons" v-bind:key="b.ID" :id="b.ID" :style="{...b.Style}" :class="b.ImageClass" class="controller_right" v-show="b.Enabled" @click="handleBtnClick(index)"></div>
   </div>
 </template>
@@ -8,9 +8,13 @@
 export default {
   name: "button-group",
   props: {
-    'buttons': {
+    buttons: {
       type: Array,
-      default: ()=>{}
+      default: () => {}
+    },
+    isPhone: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -31,98 +35,105 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#controlDiv {
+  position: relative;
+  width: 100%;
+  margin-top: 15px;
+}
+
 #addAnchorButton {
-    opacity: .66;
-    filter: alpha(opacity=66);
+  opacity: 0.66;
+  filter: alpha(opacity=66);
 }
 
 #addAnchorButton.select {
-    opacity: 1;
-    filter: alpha(opacity=100);
+  opacity: 1;
+  filter: alpha(opacity=100);
 }
 
 #mosaicButton {
-    opacity: 1;
-    filter: alpha(opacity=100);
+  opacity: 1;
+  filter: alpha(opacity=100);
 }
 
 .img-addAnchor {
-    background: url("~@/assets/textures/editor/addAnchor.png") center / 100% 100%;
+  background: url("~@/assets/textures/editor/addAnchor.png") center / 100% 100%;
 }
 
 .img-upload {
-    background: url("~@/assets/textures/editor/upload.png") center / 100% 100%;
+  background: url("~@/assets/textures/editor/upload.png") center / 100% 100%;
 }
 
 .img-screenShot {
-    background: url("~@/assets/textures/editor/screenShot.png") center / 100% 100%;
+  background: url("~@/assets/textures/editor/screenShot.png") center / 100% 100%;
 }
 
 .img-mosaic {
-    background: url("~@/assets/textures/editor/addMosaic.png") center / 100% 100%;
+  background: url("~@/assets/textures/editor/addMosaic.png") center / 100% 100%;
 }
 
 .img-captureVideo {
-    background: url("~@/assets/textures/editor/captureVideo.png") center / 100% 100%;
-    background-color: transparent !important;
+  background: url("~@/assets/textures/editor/captureVideo.png") center / 100%
+    100%;
+  background-color: transparent !important;
 }
 
 .img-record {
-    background-image: url("~@/assets/textures/record/record.png");
-    background-size: 100% 100%;
+  background-image: url("~@/assets/textures/record/record.png");
+  background-size: 100% 100%;
 }
 
 .img-replay {
-    background-image: url("~@/assets/textures/record/play.png");
-    background-size: 100% 100%;
+  background-image: url("~@/assets/textures/record/play.png");
+  background-size: 100% 100%;
 }
 
 .img-measureWall {
-    background-image: url("~@/assets/textures/measure/measureWall.png");
-    background-size: 100% 100%;
+  background-image: url("~@/assets/textures/measure/measureWall.png");
+  background-size: 100% 100%;
 }
 
 .img-measureLine {
-     background-image: url("~@/assets/textures/measure/measureLine.png");
-     background-size: 100% 100%;
- }
+  background-image: url("~@/assets/textures/measure/measureLine.png");
+  background-size: 100% 100%;
+}
 
 .img-measureGrid {
-    background-image: url("~@/assets/textures/measure/measureGrid.png");
-    background-size: 100% 100%;
+  background-image: url("~@/assets/textures/measure/measureGrid.png");
+  background-size: 100% 100%;
 }
 
 .img-addCube {
-    background-image: url("~@/assets/textures/measure/addCube.png");
-    background-size: 100% 100%;
+  background-image: url("~@/assets/textures/measure/addCube.png");
+  background-size: 100% 100%;
 }
 
 .img-measureDelete {
-    background-image: url("~@/assets/textures/measure/measureDelete.png");
-    background-size: 100% 100%;
+  background-image: url("~@/assets/textures/measure/measureDelete.png");
+  background-size: 100% 100%;
 }
 
 .controller_right {
-    color: #fff;
-    position: absolute;
-    right: 17px;
-    width: 30px;
-    height: 30px;
-    line-height: 30px !important;
-    font-size: 14px;
-    text-align: center;
-    border-radius: 15px;
-    cursor: url(~@/assets/textures/hand.png), pointer;
-    background-color: rgba(0, 0, 0, .3);
+  color: #fff;
+  position: absolute;
+  right: 17px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px !important;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 15px;
+  cursor: url(~@/assets/textures/hand.png), pointer;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .controller_right.phone {
-    color: #fff;
-    right: 10px;
-    width: 32px;
-    height: 32px;
-    line-height: 32px !important;
-    font-size: 20px;
-    border-radius: 16px;
+  color: #fff;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  line-height: 32px !important;
+  font-size: 20px;
+  border-radius: 16px;
 }
 </style>

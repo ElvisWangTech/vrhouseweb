@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    <div id="safe-area-inset-top" v-show="checkPhone()"></div>
     <default-floor-switch />
-    <button-group :buttons="buttons" />
+    <button-group :buttons="buttons" :is-phone="checkPhone()" />
     <default-scene-switch />
     <godview-panel :room-info="currRoomInfo" :mode="activeMode" :init-status="godviewPanelInitStatus" />
     <collapse :is-phone="checkPhone()" :is-collapse="true" animateclass="slideup">
@@ -41,6 +42,7 @@
       </div>
     </div>
     <global-loading v-bind:loading-status="loadingStatus" v-bind:loading-progress="loadingProgress" />
+    <div id="safe-area-inset-bottom" v-show="checkPhone()"></div>
   </div>
 </template>
 
@@ -140,7 +142,7 @@ export default {
       }, 100);
     },
     checkPhone() {
-      return this.isPhone ? "phone" : "";
+      return this.isPhone;
     },
     handleResize() {
       // TODO ...

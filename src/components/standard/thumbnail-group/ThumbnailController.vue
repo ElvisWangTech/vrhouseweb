@@ -59,6 +59,7 @@ export default {
       }
       // 更新currHotSpot 和 currRoom
       this.$store.dispatch("setCurrHotSpot", thumbnail.ID);
+      this.moveThumbnails();
     },
     handleNaviClick(dir) {
       var index = this.selIndex;
@@ -115,6 +116,8 @@ export default {
         this.l = l;
         this.r = r;
       }
+      console.log("this.l: " + this.l);
+      console.log("this.r: " + this.r);
     }
   },
   mounted() {

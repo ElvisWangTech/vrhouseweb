@@ -37,7 +37,7 @@ export default {
     'screenShot': {
       id: "screenShot",
       style: {
-        top: '110px'
+        top: '100px'
       },
       imageClass: "img-screenShot",
       enabled: true,
@@ -46,7 +46,7 @@ export default {
     'uploadButton': {
       id: "uploadButton",
       style: {
-        top: '160px'
+        top: '140px'
       },
       imageClass: "img-upload",
       enabled: true,
@@ -55,7 +55,7 @@ export default {
     'recordButton': {
       id: "recordButton",
       style: {
-        top: '190px'
+        top: '180px'
       },
       imageClass: "img-record",
       enabled: true,
@@ -64,7 +64,7 @@ export default {
     'replayButton': {
       id: "replayButton",
       style: {
-        top: '230px'
+        top: '220px'
       },
       imageClass: "img-replay",
       enabled: true,
@@ -73,7 +73,7 @@ export default {
     'measureWallButton': {
       id: "measureWallButton",
       style: {
-        top: '230px'
+        top: '260px'
       },
       imageClass: "img-measureWall",
       enabled: false,
@@ -82,7 +82,7 @@ export default {
     'measureLineButton': {
       id: "measureLineButton",
       style: {
-        top: '269px'
+        top: '300px'
       },
       imageClass: "img-measureLine",
       enabled: true,
@@ -91,7 +91,7 @@ export default {
     'measureGridButton': {
       id: "measureGridButton",
       style: {
-        top: '308px'
+        top: '340px'
       },
       imageClass: "img-measureGrid",
       enabled: true,
@@ -100,7 +100,7 @@ export default {
     'addCubeButton': {
       id: "addCubeButton",
       style: {
-        top: '347px'
+        top: '380px'
       },
       imageClass: "img-addCube",
       enabled: true,
@@ -109,7 +109,7 @@ export default {
     'measureDeleteButton': {
       id: "measureDeleteButton",
       style: {
-        top: '386px'
+        top: '420px'
       },
       imageClass: "img-measureDelete",
       enabled: true,
