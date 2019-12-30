@@ -56,6 +56,7 @@ export default {
   padding: 1px 0 0 0;
   background-color: rgba(0, 0, 0, 0);
   pointer-events: none;
+  user-select: none;
 }
 
 .collapse:not(.phone) {

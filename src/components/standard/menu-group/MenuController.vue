@@ -63,6 +63,7 @@ export default {
   color: #fff;
   text-align: left;
   vertical-align: bottom;
+  user-select: none;
 
   &:not(.phone) {
     border-top-left-radius: 20px;

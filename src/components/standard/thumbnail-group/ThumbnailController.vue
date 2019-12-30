@@ -29,6 +29,9 @@ export default {
   watch: {
     clientWidth() {
       this.moveThumbnails();
+    },
+    thumbnailList() {
+      this.moveThumbnails();
     }
   },
   data() {
@@ -59,7 +62,6 @@ export default {
       }
       // 更新currHotSpot 和 currRoom
       this.$store.dispatch("setCurrHotSpot", thumbnail.ID);
-      this.moveThumbnails();
     },
     handleNaviClick(dir) {
       var index = this.selIndex;
@@ -72,7 +74,7 @@ export default {
         newIndex = index - 1;
       }
       this.handleThumbClick(newIndex);
-      this.setSelectedThumbnailVisible();
+      this.moveThumbnails();
     },
     getBackground(item) {
       return `background: url('${item.ImagePath}') no-repeat center;background-size: cover;background-position-x: 0;`;
@@ -122,6 +124,7 @@ export default {
   },
   mounted() {
     this.thumbnailControllerWidth = this.$refs.thumbnailController.outerWidth;
+    this.moveThumbnails();
   }
 };
 </script>
@@ -226,6 +229,7 @@ export default {
   text-align: center;
   margin: 0;
   height: 82px;
+  user-select: none;
 }
 
 #thumbnail-list.phone {
@@ -233,12 +237,6 @@ export default {
   overflow-x: scroll;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-}
-
-@media (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
-  #thumbnail-list.phone {
-    /*padding-bottom: 34px;*/
-  }
 }
 
 .thumbnail_name {
@@ -288,7 +286,6 @@ input.thumbnail_name {
   height: 36px;
   line-height: 36px;
   margin-left: 10px;
-  float: left;
   color: #fff;
   font-size: 14px;
   padding: 0 6px;
@@ -304,7 +301,6 @@ input.thumbnail_name {
   line-height: 36px;
   pointer-events: auto;
   margin-right: 10px;
-  float: right;
   color: #fff;
   text-decoration: none;
   font-size: 14px;
